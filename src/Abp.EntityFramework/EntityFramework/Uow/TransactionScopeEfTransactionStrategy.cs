@@ -56,7 +56,7 @@ namespace Abp.EntityFramework.Uow
 
             var transactionOptions = new TransactionOptions
             {
-                IsolationLevel = Options.IsolationLevel.GetValueOrDefault(IsolationLevel.ReadUncommitted),
+                IsolationLevel = Options.IsolationLevel.GetValueOrDefault(IsolationLevel.ReadCommitted),
             };
 
             if (Options.Timeout.HasValue)

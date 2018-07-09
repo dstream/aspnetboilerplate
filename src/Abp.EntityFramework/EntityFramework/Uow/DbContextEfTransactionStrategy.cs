@@ -41,7 +41,7 @@ namespace Abp.EntityFramework.Uow
             if (activeTransaction == null)
             {
                 dbContext = dbContextResolver.Resolve<TDbContext>(connectionString);
-                var dbtransaction = dbContext.Database.BeginTransaction((Options.IsolationLevel ?? IsolationLevel.ReadUncommitted).ToSystemDataIsolationLevel());
+                var dbtransaction = dbContext.Database.BeginTransaction((Options.IsolationLevel ?? IsolationLevel.ReadCommitted).ToSystemDataIsolationLevel());
                 activeTransaction = new ActiveTransactionInfo(dbtransaction, dbContext);
                 ActiveTransactions[connectionString] = activeTransaction;
             }
